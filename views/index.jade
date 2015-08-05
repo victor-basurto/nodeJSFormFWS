@@ -1,0 +1,414 @@
+extends layout
+
+block content
+    center(class="top-intro")
+        div(class="panel panel-default")
+            div(class="panel-body")
+                | Hello ITT-Tech Student, please select the form you're interested in.
+    div(class="row")
+        div(class="col-md-3 col-xs-12 col-md-offset-4")
+            button(type="button", class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal01") 
+                | Academic Affairs
+    div(class="row")
+        div(class="col-md-3 col-xs-12 col-md-offset-4")
+            button(type="button" class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal02")
+                | Technical Support
+
+    // Modal Academic Affairs
+
+    div(class="modal fade", id="myModal01", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-lg", role="document")
+            div(class="modal-content")
+                div(class="modal-header")
+                    button(type="button", class="close", data-dismiss="modal", aria-label="Close") 
+                        span(aria-hidden="true") &times;
+                    h4(class="modal-title", id="myModalLabel") Academic Affairs Form
+                div(class="modal-body")
+                    form(data-togle="validator", role="form", method="post", action="/", entype="multipart/form-data")
+                        // date-picker
+                        div(class="row")
+                            div(class="col-md-3 col-xs-12 col-md-offset-9")
+                                label(for="dpicker") Select the Date:
+                                br
+                                input(type="date", name="pickDate", class="form-control", required="required")
+
+                        //- Students Name Box
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sname") Student Full Name:
+                                    br
+                                    input(type="text", class="form-control sname", id="student-name", 
+                                    name="stdName",
+                                    placeholder="John Doe", 
+                                    maxlength="30", 
+                                    pattern="^[A-Za-z ]*$",
+                                    required="required") 
+                                    span(class="error-message")
+
+                            //- Students School ID Box
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sid") Student ID: 
+                                    br
+                                    input(type="text", class="form-control sid", id="student-id",
+                                    name="stdId",
+                                    maxlength="8", 
+                                    placeholder="Enter 8-Digits Student ID", 
+                                    pattern="^[0-9]{8}$", 
+                                    required="required")
+                                    span(class="error-message")
+
+                            //- Students Email
+                            //- ^[a-z0-9](\.?[a-z0-9])+@email\.itt-tech\.edu$ for an ITT email
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="semail") Student Email:
+                                    br
+                                    div(class="input-group")
+                                        input(type="text", class="form-control semail", id="student-email",
+                                        name="stdEmail",
+                                        placeholder="Email", 
+                                        aria-describedby="basic-addon2",  
+                                        pattern="^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$",
+                                        required="required")
+                                        div(class="input-group-addon") @email.itt-tech.edu
+                                    span(class="error-message")
+
+                        //- Student Contact Number
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sphone") Contact Phone Number:
+                                    br
+                                    input(type="tel", class="form-control sphone", id="student-phone",
+                                    name="stdPhone",
+                                    maxlength="10", 
+                                    placeholder="6195554444", 
+                                    pattern="^[0-9]{10}$", 
+                                    required="required")
+                                    span(class="error-message")
+
+                            //- Students Degree
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sdegree") Student Degree:
+                                    br
+                                    select(class="form-control sdegree", id="student-degree",
+                                            name="stdDegree", 
+                                            required="required")
+                                        option(value="") Please Select One
+                                        option(value="associates") Associates
+                                        option(value="bachelors") Bachelor's
+
+                            //- Students Program
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sprogram") Program:
+                                    br
+                                    select(class="form-control sprogram", id="student-program", 
+                                            name="stdProgram", 
+                                            required="required")
+                                        option(value="") Please Select One
+                                        option(value="Electronics") Electronics
+                                        option(value="Software-Development") Software Development
+                                        option(value="NSA") NSA
+                                        option(value="Project-Managment") Project Managment
+
+                        //- Students Current Quarter
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="squarter") Current Quarter:
+                                    br
+                                    select(class="form-control", id="squarter", 
+                                            name="stdQuarter",
+                                            required="required")
+                                        option(value="") Please Select One
+                                        option(value="First-Quarter") 1 Quarter
+                                        option(value="Second-Quarter") 2 Quarter
+                                        option(value="Third-Quarter") 3 Quarter
+                                        option(value="Fourth-Quarter") 4 Quarter
+                                        option(value="Fifth-Quarter") 5 Quarter
+                                        option(value="sixth-Quarter") 6 Quarter
+                                        option(value="Capstone") Capstone
+
+                            //- Student Requested Chair
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="scourse") Request Service From:
+                                    br
+                                    select(class="form-control", id="scourse", 
+                                            name="stdChairs", 
+                                            required="required")
+                                        option(value="") Select One
+                                        option(value="Dean") Dean
+                                        option(value="It-Chair") IT Chairman
+                                        option(value="Drafting-Design-Chair") Drafting & Design Chairman
+                                        option(value="Buss-Chair") Bussiness Chairman
+                                        option(value="Electronics-Chair") Electronics Chairman
+                                        option(value="Educations-Chair") Educations Chairman
+                                        option(value="Director") School Director
+
+                            //- Student Class Requests
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sclass") Type of Request:
+                                    br
+                                    select(class="form-control", id="srequest", 
+                                            name="stdTypeRequest", 
+                                            required="required")
+                                        option(value="") Select One
+                                        option(value="Class-Change") Change Class
+                                        option(value="Class-Drop") Drop Class
+                                        option(value="Class-Request") Request Class
+                                        option(value="Theory-Request") Theory Request
+                                        option(value="Degree-Change") Change Degree
+                                        option(value="Other") Other
+
+                        //- Students Comment Box
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="form-group")
+                                    label(for="comment") Detailed Information About Request :
+                                    br
+                                    textarea(class="form-control comment", rows="5", id="student-comment",
+                                            name="stdComment", 
+                                            maxlength="300",
+                                            pattern="^.{5,300}" ,
+                                            required="required")
+                                    span(class="comments-prompt") No more than 300 Characters
+                        div(class="modal-footer")
+                            button(type="button", class="btn btn-danger", data-dismiss="modal") Close
+                            button(type="submit", id="myButton", name="submit" class="btn btn-primary submitButton") Submit
+
+    // End Academic Affairs Modal
+
+    // Technical Support Modal
+    div(class="modal fade", id="myModal02", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-lg" role="document")
+            div(class="modal-content")
+                div(class="modal-header")
+                    button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4(class="modal-title", id="myModalLabel") Technical Support Form
+                div(class="modal-body")
+                    form(data-togle="validator", role="form", action="/", entype="multipart/form-data")
+                        //- Date Picker
+                        div(class="row")
+                            div(class="col-md-3 col-xs-12 col-md-offset-9")
+                                label(for="dpicker") Select the Date:
+                                br
+                                input(type="date", class="form-control", name="pickDate" required="required")
+
+                        //- Students Name Box
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sname") Student Full Name:
+                                    br
+                                    input(type="text", class="form-control sname", id="student-name",
+                                        name="stdName",
+                                        placeholder="John Doe", 
+                                        maxlength="30", 
+                                        pattern="^[A-Za-z ]*$",
+                                        required="required")
+                                    span(class="error-message")
+
+                            //- Students School ID Box    
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sid") Student ID:
+                                    br
+                                    input(type="text", class="form-control sid", id="student-id", 
+                                        name="stdId",
+                                        maxlength="8", 
+                                        placeholder="Enter 8-Digits Student ID",
+                                        pattern="^[0-9]{8}$",
+                                        required="required")
+                                    span(class="error-message")
+
+                            //- Students Email
+                            //- ^[a-z0-9](\.?[a-z0-9])+@email\.itt-tech\.edu$ for an ITT email
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="semail") Student Email:
+                                    br
+                                    div(class="input-group")
+                                        input(type="text", id="student-email", class="form-control semail",
+                                            name="stdEmail", 
+                                            placeholder="Email",
+                                            aria-describedby="basic-addon2",
+                                            pattern="^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$",
+                                            required="required")
+                                        div(class="input-group-addon") @email.itt-tech.edu
+                                        span(class="error-message")
+
+                        //- Student Contact Number
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sphone") Contact Phone Number:
+                                    br
+                                    input(type="tel", class="form-control sphone", id="student-phone",
+                                        name="stdPhone", 
+                                        maxlength="10",
+                                        placeholder="6195554444",
+                                        pattern="^[0-9]{10}$",
+                                        required="required")
+                                    span(class="error-message")
+
+                            //- Students Degree
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sdegree") Student Degree:
+                                    br
+                                    select(class="form-control sdegree", id="student-degree", 
+                                            name="stdDegree", 
+                                            required="required")
+                                        option(value="") Please Select One
+                                        option(value="associates") Associates
+                                        option(value="bachelors") Bachelor's
+
+                            //- Students Program
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sprogram") Program:
+                                    br
+                                    select(class="form-control sprogram", id="student-program", 
+                                            name="stdProgram", 
+                                            required="required")
+                                        option(value="") Please Select One
+                                        option(value="elec") Electronics
+                                        option(value="sdv") Software Development
+                                        option(value="nsa") NSA
+                                        option(value="proj-manag") Project Managment
+
+                        //- Check Box section
+                        div(class="row")
+                            //- office 365
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sclass") Office 365 (Check all that apply):
+                                    br
+                                    label 
+                                        input(type="checkbox", name="dowloading", value="")
+                                        | &nbsp;Downloading
+                                    br
+                                    label 
+                                        input(type="checkbox", name="installing", value="")
+                                        | &nbsp;Installing
+                                    br
+                                    label 
+                                        input(type="checkbox", name="opening", value="")
+                                        | &nbsp;Opening
+                                    br
+                                    label 
+                                        input(type="checkbox", name="invalidUsername", value="")
+                                        | &nbsp;Not Valid User Name
+                                    br
+                                    label 
+                                        input(type="checkbox", name="blocked", value="")
+                                        | &nbsp;Blocked
+                                    br
+                                    label 
+                                        input(type="checkbox", name="softwareIssues", value="")
+                                        | &nbsp;Software Issues
+                                    br
+                                    label 
+                                        input(type="checkbox", name="noLicense", value="")
+                                        | &nbsp;No License
+                                    br
+
+                            //- FWS Request
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                        label(for="sclass") Rob Request (Check all that apply):
+                                        br
+                                        label 
+                                            input(type="checkbox", name="wipeSwipe", value="")
+                                            | &nbsp;Wipe & Swipe
+                                        br
+                                        label 
+                                            input(type="checkbox", name="virus", value="")
+                                            | &nbsp;Virus
+                                        br
+                                        label 
+                                            input(type="checkbox", name="popUps", value="")
+                                            | &nbsp;Pop-ups
+                                        br
+                                        label 
+                                            input(type="checkbox", name="browserIssues", value="")
+                                            | &nbsp;Browser Issues
+                                        br
+                                        label 
+                                            input(type="checkbox", name="runningSlow", value="")
+                                            | &nbsp;Running Slow
+                                        br
+                                        label 
+                                            input(type="checkbox", name="downloadingSoftware", value="")
+                                            | &nbsp;Downlading Software
+                                        br
+                                        label 
+                                            input(type="checkbox", name="dreamSpark", value="")
+                                            | &nbsp;Dream Spark Issues
+                                        br
+                                        label 
+                                            input(type="checkbox", name="vmwareIssues", value="")
+                                            | &nbsp;VM Ware Issues
+                                        br
+
+                            //- FWS Request
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sclass") LRC Request (Check all that apply):
+                                    br
+                                    label 
+                                        input(type="checkbox", name="emailIssues", value="")
+                                        | &nbsp;Student Email Issues
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdEbooks", value="")
+                                        | &nbsp;Student E-Books
+                                    br
+                                    label 
+                                        input(type="checkbox", name="std-networkIssues", value="")
+                                        | &nbsp;Student Networking Issues
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdWirelessIssues", value="")
+                                        | &nbsp;Student Wireless Issues
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdPortal", value="")
+                                        | &nbsp;Student Portal
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdPassReset", value="")
+                                        | &nbsp;Student Password Reset
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdVirtualLib", value="")
+                                        | &nbsp;Student Virtual Libary
+                                    br
+                                    label 
+                                        input(type="checkbox", name="stdPorfolio", value="")
+                                        | &nbsp;Student E-Portfolio
+                                    br
+
+                        //- Students Comment Box
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="form-group")
+                                    label(for="comment") Detailed Information About Request:
+                                    br
+                                    textarea(class="form-control comment", rows="5", id="student-comment", 
+                                    name="stdComment",
+                                    maxlength="300",
+                                    pattern="^.{5,300}" ,
+                                    required="required")
+                                    span(class="comments-prompt") No more than 300 Characters
+                        div(class="modal-footer")
+                            button(type="button", class="btn btn-danger", data-dismiss="modal") Close
+                            button(type="submit", id="myButton", name="submit", class="btn btn-primary submitButton") Submit
+    // end of Modal 

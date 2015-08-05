@@ -1,0 +1,48 @@
+a {
+	color: #00B7FF;
+}
+.jumbotron h1, .jumbotron p {
+	font-family: verdana;
+}
+#give-margin {
+	margin-left: 50px;
+}
+.panel-body {
+	font-size: 25px;
+	background-color: #eaeaea;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+
+
+
+/*---------------------------------------------------
+	FORM
+---------------------------------------------------*/
+.mybtn {
+	height: 100px;
+	width: 400px;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	margin-top: 50px;
+	font-size: 28px !important;
+
+}
+
+@media(max-width: 860px) {
+	.submit-or-cancel {
+		text-align: center;
+	} 	
+}
+.error-message {
+	color: red;
+	font-style: italic;
+}
+
+/*---------------------------------------------------
+	FINAL REVIEW FORM
+---------------------------------------------------*/
+.black-font {
+	font-weight: bold;	
+}
+.light-black-font {
+	color: #616161;
+}
