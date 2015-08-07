@@ -100,6 +100,9 @@ $(document).on('ready', function() {
 		resultString += $this.val();
 	});
 
+	$('#print').on('click', function() {
+		window.print();
+	});
 	// $('.submitButton').click(function() {
 	// 	window.open('details.html');
 	// });

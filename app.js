@@ -53,16 +53,17 @@ app.get('/', function( req, res ) {
 });
 
 // finalReview view
-app.get('/', function( req, res ) {
-	// find and grab data from DB
-	StudentRequest.find(function(err, doc) {
-		// render the finalReview
-		if( err ) {
-			console.log(err);
-		}
-		res.render('printForm', {studentDatas: doc});
-	});
-});
+// app.get('/', function( req, res ) {
+// 	// find and grab data from DB
+// 	StudentRequest.find(function(err, doc) {
+// 		// render the finalReview
+// 		console.log('Doc: ', doc);
+// 		if( err ) {
+// 			console.log(err);
+// 		}
+// 		res.render('printForm', {studentDatas: doc});
+// 	});
+// });
 
 /**
  * Adding content to DB
@@ -89,13 +90,18 @@ app.post('/', function( req, res, next ) {
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
 	
-	studentData.save(function(err) {
+	studentData.save(function(err, obj) {
+		for( var i = 0; i < arguments.length; i++ ) {
+			console.log("Arguments: " + i, arguments[i]);
+		}
 		if( err ) {
 			console.log(err);
 			res.render('index');
 		} else {
-			console.log(data);
-			res.render('printForm');
+			console.log(obj);
+			// res.render('printForm');
+
+			res.render('printForm', {studentData: obj});
 		}
 	});	
 	
