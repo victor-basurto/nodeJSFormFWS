@@ -1,3 +1,6 @@
+/**
+ * Global Variables
+ */
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -57,7 +60,7 @@ app.get('/', function( req, res ) {
 		if( err ) {
 			console.log(err);
 		}
-		res.render('finalReview', {studentInfo: doc});
+		res.render('printForm', {studentDatas: doc});
 	});
 });
 
@@ -85,32 +88,28 @@ app.post('/', function( req, res, next ) {
 
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
-
-	// res( , function(err, data) {
-	// 	if ( err ) {
-	// 		console.log(err);
-	// 		res.render('index');
-	// 	} else {
-	// 		studentData.save(function(data) {
-	// 			console.log(data);
-	// 			res.render('finalReview');
-	// 		});
-	// 	}
-	// });
 	
-	studentData.save(function(err, data) {
+	studentData.save(function(err) {
 		if( err ) {
 			console.log(err);
 			res.render('index');
 		} else {
 			console.log(data);
-			res.render('finalReview');
+			res.render('printForm');
 		}
 	});	
 	
 	
-	next();
 });
+
+/**
+ * creating the views
+ */
+// app.get('print/printForm', function( req, res ) {
+// 	// rendering the new views
+// 	res.render('/print/printForm');
+// });
+
 
 
 app.listen(8080);

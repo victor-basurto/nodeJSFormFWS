@@ -1,4 +1,4 @@
-extends layout
+extends layout.jade
 
 block content
     center(class="top-intro")
@@ -24,7 +24,7 @@ block content
                         span(aria-hidden="true") &times;
                     h4(class="modal-title", id="myModalLabel") Academic Affairs Form
                 div(class="modal-body")
-                    form(data-togle="validator", role="form", method="post", action="/", entype="multipart/form-data")
+                    form(data-togle="validator", role="form", method="post", action="/")
                         // date-picker
                         div(class="row")
                             div(class="col-md-3 col-xs-12 col-md-offset-9")
