@@ -31,6 +31,9 @@ var formSchema = {
 	current_quarter: String,
 	chairs_request: String,
 	class_request: String,
+	office_365:String,
+	tech_request: String,
+	lrc_request: String,
 	comments: String
 };
 
@@ -52,18 +55,6 @@ app.get('/', function( req, res ) {
 	res.render('index');
 });
 
-// finalReview view
-// app.get('/', function( req, res ) {
-// 	// find and grab data from DB
-// 	StudentRequest.find(function(err, doc) {
-// 		// render the finalReview
-// 		console.log('Doc: ', doc);
-// 		if( err ) {
-// 			console.log(err);
-// 		}
-// 		res.render('printForm', {studentDatas: doc});
-// 	});
-// });
 
 /**
  * Adding content to DB
@@ -87,6 +78,8 @@ app.post('/', function( req, res, next ) {
 		comments: req.body.stdComment
 	}
 
+	
+
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
 	
@@ -103,18 +96,49 @@ app.post('/', function( req, res, next ) {
 
 			res.render('printForm', {studentData: obj});
 		}
-	});	
-	
-	
+	});		
 });
 
 /**
- * creating the views
+ * Adding content from the second Modal to DB
+ * once the user submit the data from the second Modal
+ * the server will response rendering the second form
  */
-// app.get('print/printForm', function( req, res ) {
-// 	// rendering the new views
-// 	res.render('/print/printForm');
-// });
+app.post('/second-modal', function( req, res, next ) {
+
+	// obtaining data from the user with the already defined schema
+	var data_secondModal = {
+		date: req.body.pickDate,
+		std_name: req.body.stdName,
+		std_ID: req.body.stdId,
+		std_Email: req.body.stdEmail,
+		std_phone: req.body.stdPhone,
+		std_degree: req.body.stdDegree,
+		std_program: req.body.stdProgram,
+		office_365: req.body.office365,
+		tech_request: req.body.technicalRequest,
+		lrc_request: req.body.lrcRequest,
+		comments: req.body.stdComment
+
+	}
+
+	var studentDataModal_two = new StudentRequest(data_secondModal);
+	studentDataModal_two.save(function(err, obj) {
+		for( var i = 0; i < arguments.length; i++ ) {
+			console.log("Arguments: " + i, arguments[i]);
+		}
+		if( err ) {
+			console.log(err);
+			res.render('index');
+		} else {
+			console.log(obj);
+			// res.render('printForm');
+
+			res.render('printFormModal_two', {studentDataModal_two: obj});
+		}
+	});
+});
+
 
 
 

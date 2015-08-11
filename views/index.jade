@@ -180,7 +180,7 @@ block content
                                     span(class="comments-prompt") No more than 300 Characters
                         div(class="modal-footer")
                             button(type="button", class="btn btn-danger", data-dismiss="modal") Close
-                            button(type="submit", id="myButton", name="submit" class="btn btn-primary submitButton") Submit
+                            button(type="submit", id="myButton", name="submit", class="btn btn-primary submitButton") Submit
 
     // End Academic Affairs Modal
 
@@ -193,13 +193,13 @@ block content
                         span(aria-hidden="true") &times;
                     h4(class="modal-title", id="myModalLabel") Technical Support Form
                 div(class="modal-body")
-                    form(data-togle="validator", role="form", action="/", entype="multipart/form-data")
+                    form(data-togle="validator", role="form", method="post", action="/second-modal")
                         //- Date Picker
                         div(class="row")
                             div(class="col-md-3 col-xs-12 col-md-offset-9")
                                 label(for="dpicker") Select the Date:
                                 br
-                                input(type="date", class="form-control", name="pickDate" required="required")
+                                input(type="date", class="form-control", name="pickDate", required="required")
 
                         //- Students Name Box
                         div(class="row")
@@ -289,110 +289,110 @@ block content
                             //- office 365
                             div(class="col-md-4 col-xs-12")
                                 div(class="form-group")
-                                    label(for="sclass") Office 365 (Check all that apply):
+                                    label(for="sclass", id="std-office", name="stdOffice") Office 365 (Check all that apply):
                                     br
                                     label 
-                                        input(type="checkbox", name="dowloading", value="")
+                                        input(type="checkbox", name="office365", value="Downloading")
                                         | &nbsp;Downloading
                                     br
                                     label 
-                                        input(type="checkbox", name="installing", value="")
+                                        input(type="checkbox", name="office365", value="Installing")
                                         | &nbsp;Installing
                                     br
                                     label 
-                                        input(type="checkbox", name="opening", value="")
+                                        input(type="checkbox", name="office365", value="Opening")
                                         | &nbsp;Opening
                                     br
                                     label 
-                                        input(type="checkbox", name="invalidUsername", value="")
+                                        input(type="checkbox", name="office365", value="Not Valid User Name")
                                         | &nbsp;Not Valid User Name
                                     br
                                     label 
-                                        input(type="checkbox", name="blocked", value="")
+                                        input(type="checkbox", name="office365", value="Blocked")
                                         | &nbsp;Blocked
                                     br
                                     label 
-                                        input(type="checkbox", name="softwareIssues", value="")
+                                        input(type="checkbox", name="office365", value="Software Issues")
                                         | &nbsp;Software Issues
                                     br
                                     label 
-                                        input(type="checkbox", name="noLicense", value="")
+                                        input(type="checkbox", name="office365", value="No License")
                                         | &nbsp;No License
                                     br
 
                             //- FWS Request
                             div(class="col-md-4 col-xs-12")
                                 div(class="form-group")
-                                        label(for="sclass") Rob Request (Check all that apply):
+                                        label(for="sclass", id="tech-request") Technical Request (Check all that apply):
                                         br
                                         label 
-                                            input(type="checkbox", name="wipeSwipe", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Wipe & Swipe")
                                             | &nbsp;Wipe & Swipe
                                         br
                                         label 
-                                            input(type="checkbox", name="virus", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Virus")
                                             | &nbsp;Virus
                                         br
                                         label 
-                                            input(type="checkbox", name="popUps", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Pop-ups")
                                             | &nbsp;Pop-ups
                                         br
                                         label 
-                                            input(type="checkbox", name="browserIssues", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Browser Issues")
                                             | &nbsp;Browser Issues
                                         br
                                         label 
-                                            input(type="checkbox", name="runningSlow", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Running Slow")
                                             | &nbsp;Running Slow
                                         br
                                         label 
-                                            input(type="checkbox", name="downloadingSoftware", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Downlading Software")
                                             | &nbsp;Downlading Software
                                         br
                                         label 
-                                            input(type="checkbox", name="dreamSpark", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Dream Spark Issues")
                                             | &nbsp;Dream Spark Issues
                                         br
                                         label 
-                                            input(type="checkbox", name="vmwareIssues", value="")
+                                            input(type="checkbox", name="technicalRequest", value="Vm Ware Issues")
                                             | &nbsp;VM Ware Issues
                                         br
 
                             //- FWS Request
                             div(class="col-md-4 col-xs-12")
                                 div(class="form-group")
-                                    label(for="sclass") LRC Request (Check all that apply):
+                                    label(for="sclass", id="lrc-request") General Request (Check all that apply):
                                     br
                                     label 
-                                        input(type="checkbox", name="emailIssues", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Email Issues")
                                         | &nbsp;Student Email Issues
                                     br
                                     label 
-                                        input(type="checkbox", name="stdEbooks", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student E-Books")
                                         | &nbsp;Student E-Books
                                     br
                                     label 
-                                        input(type="checkbox", name="std-networkIssues", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Networking Issues")
                                         | &nbsp;Student Networking Issues
                                     br
                                     label 
-                                        input(type="checkbox", name="stdWirelessIssues", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Wireless Issues")
                                         | &nbsp;Student Wireless Issues
                                     br
                                     label 
-                                        input(type="checkbox", name="stdPortal", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Portal")
                                         | &nbsp;Student Portal
                                     br
                                     label 
-                                        input(type="checkbox", name="stdPassReset", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Password Reset")
                                         | &nbsp;Student Password Reset
                                     br
                                     label 
-                                        input(type="checkbox", name="stdVirtualLib", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student Virtual Libary")
                                         | &nbsp;Student Virtual Libary
                                     br
                                     label 
-                                        input(type="checkbox", name="stdPorfolio", value="")
+                                        input(type="checkbox", name="lrcRequest", value="Student E-Portfolio")
                                         | &nbsp;Student E-Portfolio
                                     br
 

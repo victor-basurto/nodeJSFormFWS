@@ -95,10 +95,22 @@ $(document).on('ready', function() {
 		}
 	});
 
-	var result = $('input[type="checkbox"]:checked');
-	result.each(function() {
-		resultString += $this.val();
-	});
+	$('#std-office:checkbox[name=office365]:checked').each(function() {
+        var result = $(this).val();
+		return result;
+    });
+
+    $('#tech-request:checkbox[name=technicalRequest]:checked').each(function() {
+        var result = $(this).val();
+		return result;
+    });
+
+    $('#lrc-request:checkbox[name=lrcRequest]:checked').each(function() {
+        var result = $(this).val();
+		return result;
+    });
+
+
 
 	$('#print').on('click', function() {
 		window.print();
