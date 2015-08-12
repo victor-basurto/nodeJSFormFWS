@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var app = express();
 
 /**
- * Establish connection to the Database
+ * Establish connection to Database
+ * Database Name: itt-request-form
+ * Database Collection: studentrequests
  */
 mongoose.connect('mongodb://localhost/itt-request-form');
 
@@ -17,8 +19,10 @@ mongoose.connect('mongodb://localhost/itt-request-form');
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 /**
  * Define Form Schema
+ * This Schema will receive all the data from the user
  */
 var formSchema = {
 	date: Date,
@@ -41,7 +45,7 @@ var formSchema = {
 var StudentRequest = mongoose.model('StudentRequest', formSchema);
 
 
-// setup jade
+// setting up jade
 app.set('view engine', 'jade');
 
 // enable public folders
@@ -50,13 +54,13 @@ app.use(express.static('public'));
 /**
  * Setting the Views
  */
-// index view
 app.get('/', function( req, res ) {
-	res.render('index');
+	res.render('index'); // index view
 });
 
 
 /**
+ * POST forms and
  * Adding content to DB
  */
 app.post('/', function( req, res, next ) {
@@ -83,17 +87,21 @@ app.post('/', function( req, res, next ) {
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
 	
+	// handle the save method
 	studentData.save(function(err, obj) {
+		// log the arguments that the user posted to check if they exist
 		for( var i = 0; i < arguments.length; i++ ) {
 			console.log("Arguments: " + i, arguments[i]);
 		}
+		// in case an error, print the error and render index again
 		if( err ) {
 			console.log(err);
 			res.render('index');
 		} else {
 			console.log(obj);
-			// res.render('printForm');
-
+			// if there's no error, send user to printForm.jade 
+			// and pass studentData as an object to 
+			// retreive all the info from the DB
 			res.render('printForm', {studentData: obj});
 		}
 	});		
@@ -122,18 +130,25 @@ app.post('/second-modal', function( req, res, next ) {
 
 	}
 
+	// create a new product obtained from the data
 	var studentDataModal_two = new StudentRequest(data_secondModal);
+
+	// handle the save method
 	studentDataModal_two.save(function(err, obj) {
+		// log the arguments that the user posted to check if they exist
 		for( var i = 0; i < arguments.length; i++ ) {
 			console.log("Arguments: " + i, arguments[i]);
 		}
+		// in case an error, print the error and render index again
 		if( err ) {
 			console.log(err);
+
 			res.render('index');
 		} else {
 			console.log(obj);
-			// res.render('printForm');
-
+			// if there's no error, send user to printForm.jade 
+			// and pass studentData as an object to 
+			// retreive all the info from the DB
 			res.render('printFormModal_two', {studentDataModal_two: obj});
 		}
 	});
@@ -141,5 +156,5 @@ app.post('/second-modal', function( req, res, next ) {
 
 
 
-
+// listen into port 8080
 app.listen(8080);

@@ -15,7 +15,6 @@ block content
                 | Technical Support
 
     // Modal Academic Affairs
-
     div(class="modal fade", id="myModal01", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
         div(class="modal-dialog modal-lg", role="document")
             div(class="modal-content")
@@ -39,11 +38,11 @@ block content
                                     label(for="sname") Student Full Name:
                                     br
                                     input(type="text", class="form-control sname", id="student-name", 
-                                    name="stdName",
-                                    placeholder="John Doe", 
-                                    maxlength="30", 
-                                    pattern="^[A-Za-z ]*$",
-                                    required="required") 
+                                        name="stdName",
+                                        placeholder="John Doe", 
+                                        maxlength="30", 
+                                        pattern="^[A-Za-z ]*$",
+                                        required="required") 
                                     span(class="error-message")
 
                             //- Students School ID Box
@@ -52,11 +51,11 @@ block content
                                     label(for="sid") Student ID: 
                                     br
                                     input(type="text", class="form-control sid", id="student-id",
-                                    name="stdId",
-                                    maxlength="8", 
-                                    placeholder="Enter 8-Digits Student ID", 
-                                    pattern="^[0-9]{8}$", 
-                                    required="required")
+                                        name="stdId",
+                                        maxlength="8", 
+                                        placeholder="Enter 8-Digits Student ID", 
+                                        pattern="^[0-9]{8}$", 
+                                        required="required")
                                     span(class="error-message")
 
                             //- Students Email
@@ -82,11 +81,11 @@ block content
                                     label(for="sphone") Contact Phone Number:
                                     br
                                     input(type="tel", class="form-control sphone", id="student-phone",
-                                    name="stdPhone",
-                                    maxlength="10", 
-                                    placeholder="6195554444", 
-                                    pattern="^[0-9]{10}$", 
-                                    required="required")
+                                        name="stdPhone",
+                                        maxlength="10", 
+                                        placeholder="6195554444", 
+                                        pattern="^[0-9]{10}$", 
+                                        required="required")
                                     span(class="error-message")
 
                             //- Students Degree
@@ -98,8 +97,8 @@ block content
                                             name="stdDegree", 
                                             required="required")
                                         option(value="") Please Select One
-                                        option(value="associates") Associates
-                                        option(value="bachelors") Bachelor's
+                                        option(value="Associates") Associates
+                                        option(value="Bachelor's") Bachelor's
 
                             //- Students Program
                             div(class="col-md-4 col-xs-12")
@@ -110,10 +109,16 @@ block content
                                             name="stdProgram", 
                                             required="required")
                                         option(value="") Please Select One
-                                        option(value="Electronics") Electronics
+                                        option(value="Electrical Engineering and Communications Technology") Electronics
+                                        option(value="Electrical Engineering Technology") Electrical Engineering Technology
                                         option(value="Software-Development") Software Development
-                                        option(value="NSA") NSA
-                                        option(value="Project-Managment") Project Managment
+                                        option(value="Network Systems Administration") NSA
+                                        option(value="Information System and Cybersecurity") ISC
+                                        option(value="Project Managment") Project Managment
+                                        option(value="Accounting") Accounting
+                                        option(value="Business Managment") Business Managment
+                                        option(value="Drafting and Design Technology") Drafting and Design Technology
+                                        option(value="Industrial Engineering Technology") Industrial Engineering Technology
 
                         //- Students Current Quarter
                         div(class="row")
@@ -121,17 +126,12 @@ block content
                                 div(class="form-group")
                                     label(for="squarter") Current Quarter:
                                     br
-                                    select(class="form-control", id="squarter", 
-                                            name="stdQuarter",
-                                            required="required")
-                                        option(value="") Please Select One
-                                        option(value="First-Quarter") 1 Quarter
-                                        option(value="Second-Quarter") 2 Quarter
-                                        option(value="Third-Quarter") 3 Quarter
-                                        option(value="Fourth-Quarter") 4 Quarter
-                                        option(value="Fifth-Quarter") 5 Quarter
-                                        option(value="sixth-Quarter") 6 Quarter
-                                        option(value="Capstone") Capstone
+                                    input(type="text", class="form-control", id="squarter", 
+                                        name="stdQuarter",
+                                        maxlength="2",
+                                        placeholder="Enter Number of Current Quarter",
+                                        pattern="^[0-9]$",
+                                        required="required")
 
                             //- Student Requested Chair
                             div(class="col-md-4 col-xs-12")
@@ -142,13 +142,13 @@ block content
                                             name="stdChairs", 
                                             required="required")
                                         option(value="") Select One
-                                        option(value="Dean") Dean
-                                        option(value="It-Chair") IT Chairman
-                                        option(value="Drafting-Design-Chair") Drafting & Design Chairman
-                                        option(value="Buss-Chair") Bussiness Chairman
-                                        option(value="Electronics-Chair") Electronics Chairman
-                                        option(value="Educations-Chair") Educations Chairman
-                                        option(value="Director") School Director
+                                        option(value="Chair of Information Technology") Chair of Information Technology
+                                        option(value="Chair of Business") Chair of Business
+                                        option(value="Associate Dean") Associate Dean
+                                        option(value="Associate Dean, General Studies") Associate Dean, General Studies
+                                        option(value="Chair of Drafting and Design") Chair of Drafting and Design
+                                        option(value="Chair of Electronics Technology") Chair of Electronics Technology
+                                        option(value="School Director") School Director
 
                             //- Student Class Requests
                             div(class="col-md-4 col-xs-12")
@@ -159,11 +159,12 @@ block content
                                             name="stdTypeRequest", 
                                             required="required")
                                         option(value="") Select One
-                                        option(value="Class-Change") Change Class
-                                        option(value="Class-Drop") Drop Class
-                                        option(value="Class-Request") Request Class
-                                        option(value="Theory-Request") Theory Request
-                                        option(value="Degree-Change") Change Degree
+                                        option(value="Change Class") Change Class
+                                        option(value="Drop Class") Drop Class
+                                        option(value="Request Class") Request Class
+                                        option(value="Request Theory Room") Request Theory Room
+                                        option(value="Change Degree") Change Degree
+                                        option(value="Request Tutoring") Request Tutoring
                                         option(value="Other") Other
 
                         //- Students Comment Box
@@ -173,10 +174,10 @@ block content
                                     label(for="comment") Detailed Information About Request :
                                     br
                                     textarea(class="form-control comment", rows="5", id="student-comment",
-                                            name="stdComment", 
-                                            maxlength="300",
-                                            pattern="^.{5,300}" ,
-                                            required="required")
+                                        name="stdComment", 
+                                        maxlength="300",
+                                        pattern="^.{5,300}" ,
+                                        required="required")
                                     span(class="comments-prompt") No more than 300 Characters
                         div(class="modal-footer")
                             button(type="button", class="btn btn-danger", data-dismiss="modal") Close
@@ -279,10 +280,16 @@ block content
                                             name="stdProgram", 
                                             required="required")
                                         option(value="") Please Select One
-                                        option(value="elec") Electronics
-                                        option(value="sdv") Software Development
-                                        option(value="nsa") NSA
-                                        option(value="proj-manag") Project Managment
+                                        option(value="Electrical Engineering and Communications Technology") Electronics
+                                        option(value="Electrical Engineering Technology") Electrical Engineering Technology
+                                        option(value="Software-Development") Software Development
+                                        option(value="Network Systems Administration") NSA
+                                        option(value="Information System and Cybersecurity") ISC
+                                        option(value="Project Managment") Project Managment
+                                        option(value="Accounting") Accounting
+                                        option(value="Business Managment") Business Managment
+                                        option(value="Drafting and Design Technology") Drafting and Design Technology
+                                        option(value="Industrial Engineering Technology") Industrial Engineering Technology
 
                         //- Check Box section
                         div(class="row")

@@ -4,8 +4,9 @@ block content
 	div(class="container")
 		div(class="jumbotron")
 			h1 Review Your Form
-			p After Reviewing, Please Print 
+			p After Reviewing, Please Print
 
+		// Print all data from the database
 		div(class="container")
 			div(class="row")
 				div(class="col-md-3 col-xs-12 col-md-offset-9")
@@ -58,6 +59,7 @@ block content
 					label(class="black-font") Current Quarter:
 					br
 					p(class="ligth-black-font")=studentData.current_quarter
+						| &nbsp;Quarter
 
 				//- Student Requested Chair
 				div(class="col-md-4 col-xs-12")

@@ -79,6 +79,23 @@ $(document).on('ready', function() {
 	});
 
 	/**
+	 * This function, will validate Student Quarter
+	 */
+	$('.squarter').keyup(function() {
+		// global variable for $('.quarter')
+		var $this = $(this);
+
+		if( !$this.val() ) { // if there's no value inside of the field
+			$this.controlMessage('Enter Your Current Quarter', 'error');
+			return false;
+		} else if( !$this.val().match(/^[0-9]*$/) ) { // if the value contains spaces
+			$this.controlMessage('Only Numbers and No Spaces', 'error');
+		} else if( $this.val() !== "" ) {
+			$this.controlMessage(); // if user type again, hide message
+		}
+	});
+
+	/**
 	 * This function, will validate Student Comments
 	 * The comment textarea is specific for 300 characters 
 	 * 
@@ -95,29 +112,29 @@ $(document).on('ready', function() {
 		}
 	});
 
+	// obtain results from the office365 checkbox
 	$('#std-office:checkbox[name=office365]:checked').each(function() {
         var result = $(this).val();
 		return result;
     });
 
+	// obtain results from the TechnicalRequest checkbox
     $('#tech-request:checkbox[name=technicalRequest]:checked').each(function() {
         var result = $(this).val();
 		return result;
     });
 
+    // obtain results from the lrcRequest checkbox
     $('#lrc-request:checkbox[name=lrcRequest]:checked').each(function() {
         var result = $(this).val();
 		return result;
     });
 
 
-
+    // enable print options
 	$('#print').on('click', function() {
 		window.print();
 	});
-	// $('.submitButton').click(function() {
-	// 	window.open('details.html');
-	// });
 
 	/**
 	 * Passing three arguments 
