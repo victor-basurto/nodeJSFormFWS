@@ -38,6 +38,7 @@ var formSchema = {
 	office_365:String,
 	tech_request: String,
 	lrc_request: String,
+	std_service_tag:Number,
 	comments: String
 };
 
@@ -126,6 +127,7 @@ app.post('/second-modal', function( req, res, next ) {
 		office_365: req.body.office365,
 		tech_request: req.body.technicalRequest,
 		lrc_request: req.body.lrcRequest,
+		std_service_tag: req.body.stdServiceTag,
 		comments: req.body.stdComment
 
 	}

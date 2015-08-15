@@ -5,14 +5,15 @@ block content
         div(class="panel panel-default")
             div(class="panel-body")
                 | Hello ITT-Tech Student, please select the form you're interested in.
-    div(class="row")
-        div(class="col-md-3 col-xs-12 col-md-offset-4")
-            button(type="button", class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal01") 
-                | Academic Affairs
-    div(class="row")
-        div(class="col-md-3 col-xs-12 col-md-offset-4")
-            button(type="button" class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal02")
-                | Technical Support
+    div(class="buttons-centered")
+        div(class="row")
+            div(class="col-md-4 col-md-offset-4")
+                button(type="button", class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal01") 
+                    | Academic Affairs
+        div(class="row")
+            div(class="col-md-4 col-md-offset-4")
+                button(type="button" class="btn btn-default btn-lg mybtn", data-toggle="modal", data-target="#myModal02")
+                    | Technical Support
 
     // Modal Academic Affairs
     div(class="modal fade", id="myModal01", tabindex="-1", role="dialog", aria-labelledby="myModalLabel")
@@ -130,7 +131,7 @@ block content
                                         name="stdQuarter",
                                         maxlength="2",
                                         placeholder="Enter Number of Current Quarter",
-                                        pattern="^[0-9]$",
+                                        pattern="^[0-9]*$",
                                         required="required")
 
                             //- Student Requested Chair
@@ -237,13 +238,13 @@ block content
                                     br
                                     div(class="input-group")
                                         input(type="text", id="student-email", class="form-control semail",
-                                            name="stdEmail", 
-                                            placeholder="Email",
-                                            aria-describedby="basic-addon2",
-                                            pattern="^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$",
-                                            required="required")
+                                        name="stdEmail", 
+                                        placeholder="Email",
+                                        aria-describedby="basic-addon2",
+                                        pattern="^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$",
+                                        required="required")
                                         div(class="input-group-addon") @email.itt-tech.edu
-                                        span(class="error-message")
+                                    span(class="error-message")
 
                         //- Student Contact Number
                         div(class="row")
@@ -402,6 +403,18 @@ block content
                                         input(type="checkbox", name="lrcRequest", value="Student E-Portfolio")
                                         | &nbsp;Student E-Portfolio
                                     br
+                        div(class="row")
+                            div(class="col-md-4 col-xs-12")
+                                div(class="form-group")
+                                    label(for="sServiceTag") Please Enter Service Tag:
+                                    br
+                                    input(type="text", class="form-control sServTag", id="student-service-tag", 
+                                        name="stdServiceTag",
+                                        maxlength="8", 
+                                        placeholder="Enter Service Tag",
+                                        pattern="^[0-9]{8}$",
+                                        required="required")
+                                    span(class="error-message")
 
                         //- Students Comment Box
                         div(class="row")

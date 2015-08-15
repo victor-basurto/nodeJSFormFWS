@@ -1,8 +1,11 @@
+.buttons-centered {
+	text-align: center;
+}
 a {
 	color: #00B7FF;
 }
 .jumbotron h1, .jumbotron p {
-	font-family: verdana;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
 #give-margin {
 	margin-left: 50px;
@@ -12,6 +15,7 @@ a {
 	background-color: #eaeaea;
 	font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
+
 
 
 

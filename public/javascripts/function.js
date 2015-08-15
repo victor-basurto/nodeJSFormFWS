@@ -96,6 +96,23 @@ $(document).on('ready', function() {
 	});
 
 	/**
+	 * This function, will validate Student Quarter
+	 */
+	$('.sServTag').keyup(function() {
+		// global variable for $('.quarter')
+		var $this = $(this);
+
+		if( !$this.val() ) { // if there's no value inside of the field
+			$this.controlMessage('Enter Only Service Tag', 'error');
+			return false;
+		} else if( !$this.val().match(/^[0-9]*$/) ) { // if the value contains spaces
+			$this.controlMessage('Only Numbers and No Spaces', 'error');
+		} else if( $this.val() !== "" ) {
+			$this.controlMessage(); // if user type again, hide message
+		}
+	});
+
+	/**
 	 * This function, will validate Student Comments
 	 * The comment textarea is specific for 300 characters 
 	 * 
