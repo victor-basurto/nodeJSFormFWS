@@ -1,0 +1,85 @@
+extends ../layout.jade
+
+block content
+	div(class="container")
+		div(class="jumbotron")
+			h1 Review Your Accademic Affair Form
+			p After Reviewing, Please Print
+
+	// Modal Academic Affairs
+	form(data-togle="validator", role="form", method="post", action="/reviewAccform")
+		// date-picker
+		div(class="row")
+			div(class="col-md-3 col-xs-12 col-md-offset-9")
+				label(class="black-font") Date:
+				br
+				p(class="ligth-black-font")=studentData.date.toDateString()
+
+		//- Students Name Box
+		div(class="row")
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Student Full Name:
+				br
+				p(class="ligth-black-font")=studentData.std_name
+
+			//- Students School ID Box
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Student ID: 
+				br
+				p(class="ligth-black-font")=studentData.std_ID
+
+			//- Students Email
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Student Email:
+				br
+				p(class="ligth-black-font")=studentData.std_Email 
+					| @email.itt-tech.edu
+
+		//- Student Contact Number
+		div(class="row")
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Contact Phone Number:
+				brl
+				p(class="ligth-black-font")=studentData.std_phone
+
+			//- Students Degree
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Student Degree:
+				br
+				p(class="ligth-black-font")=studentData.std_degree
+
+			//- Students Program
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Program:
+				br
+				p(class="ligth-black-font")=studentData.std_program
+
+		//- Students Current Quarter
+		div(class="row")
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Current Quarter:
+				br
+				p(class="ligth-black-font")=studentData.current_quarter
+					| &nbsp;Quarter
+
+			//- Student Requested Chair
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Request Service From:
+				br
+				p(class="ligth-black-font")=studentData.chairs_request
+
+			//- Student Class Requests
+			div(class="col-md-4 col-xs-12")
+				label(class="black-font") Type of Request:
+				br
+				p(class="ligth-black-font")=studentData.class_request
+
+		//- Students Comment Box
+		div(class="row")
+			div(class="col-md-12 col-xs-12")
+				label(class="black-font") Detailed Information About Request:
+				br
+				p(class="ligth-black-font")=studentData.comments
+				button(type="button" class="btn btn-info pull-right" id="print") Print Page
+			button(type="button", class="btn btn-danger", data-dismiss="modal") Close
+			button(type="submit", id="myButton", name="submit", class="btn btn-primary submitButton") Submit

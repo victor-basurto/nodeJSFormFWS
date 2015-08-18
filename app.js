@@ -83,29 +83,28 @@ app.post('/', function( req, res, next ) {
 		comments: req.body.stdComment
 	}
 
-	
 
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
+
+	// app.get('/lastReview', function( req, res ) {
+	// 	StudentRequest.find(function(err, obj) {
+	// 		if( err ) 
+	// 			console.log(err);
+	// 		else
+	// 			res.render('lastReview/reviewAccademicForm', {studentData: obj})
+	// 	});
+	// });
 	
-	// handle the save method
-	studentData.save(function(err, obj) {
-		// log the arguments that the user posted to check if they exist
-		for( var i = 0; i < arguments.length; i++ ) {
-			console.log("Arguments: " + i, arguments[i]);
-		}
-		// in case an error, print the error and render index again
+	app.get('/lastReview', function(res, err, obj) {
 		if( err ) {
-			console.log(err);
-			res.render('index');
+			throw err;
 		} else {
 			console.log(obj);
-			// if there's no error, send user to printForm.jade 
-			// and pass studentData as an object to 
-			// retreive all the info from the DB
-			res.render('printForm', {studentData: obj});
+			res.render('lastReview/reviewAccademicForm', {studentData: obj});
 		}
-	});		
+	});
+	
 });
 
 /**
@@ -154,6 +153,55 @@ app.post('/second-modal', function( req, res, next ) {
 			res.render('printFormModal_two', {studentDataModal_two: obj});
 		}
 	});
+});
+
+/**
+ * Review before Submit
+ */
+app.post('/reviewAccForm', function( req, res, next ) {
+
+	// check if everything went true
+	console.log(req.bodyParser);
+
+	// obtaining data from the user with the already defined schema
+	var data = {
+		date: req.body.pickDate,
+		std_name: req.body.stdName,
+		std_ID: req.body.stdId,
+		std_Email: req.body.stdEmail,
+		std_phone: req.body.stdPhone,
+		std_degree: req.body.stdDegree,
+		std_program: req.body.stdProgram,
+		current_quarter: req.body.stdQuarter,
+		chairs_request: req.body.stdChairs,
+		class_request: req.body.stdTypeRequest,
+		comments: req.body.stdComment
+	}
+
+	
+
+	// create a new product obtained from the data
+	var studentData = new StudentRequest(data);
+	
+	// handle the save method
+	studentData.save(function(err, obj) {
+		// log the arguments that the user posted to check if they exist
+		for( var i = 0; i < arguments.length; i++ ) {
+			console.log("Arguments: " + i, arguments[i]);
+		}
+		// in case an error, print the error and render index again
+		if( err ) {
+			console.log(err);
+			res.render('../index');
+		} else {
+			console.log(obj);
+			// if there's no error, send user to printForm.jade 
+			// and pass studentData as an object to 
+			// retreive all the info from the DB
+			res.render('../printForm', {studentData: obj});
+		}
+	});	
+
 });
 
 

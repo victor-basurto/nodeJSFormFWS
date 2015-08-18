@@ -1,0 +1,26 @@
+{
+  "name": "nodeRequestForm",
+  "version": "0.0.0",
+  "description": "Student Request Form",
+  "main": "app.js",
+  "dependencies": {
+    "jade": "~1.11.0",
+    "mongoose": "~4.1.0",
+    "express": "~4.13.1",
+    "body-parser": "~1.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/victor-basurto/nodeJSFormFWS.git"
+  },
+  "author": "Victor Basurto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victor-basurto/nodeJSFormFWS/issues"
+  },
+  "homepage": "https://github.com/victor-basurto/nodeJSFormFWS"
+}
