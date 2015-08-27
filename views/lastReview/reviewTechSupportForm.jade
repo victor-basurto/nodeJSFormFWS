@@ -1,1 +1,88 @@
 extends ../layout.jade
+
+block content
+	div(class="container")
+		div(class="jumbotron")
+			h1 Review Your Accademic Affair Form
+			p After Reviewing, Please Print or Go Back to Edit Form again
+
+		// Modal Academic Affairs
+		form(data-togle="validator", role="form", method="post", action="/reviewAccform")
+			// date-picker
+			div(class="row")
+				div(class="col-md-2 col-md-offset-10")
+					label(class="black-font") Date:
+					br
+					div(class="well ligth-black-font")=studentData.date.toDateString()
+
+			//- Students Name Box
+			div(class="row")
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Student Full Name:
+					br
+					div(class="well ligth-black-font")=studentData.std_name
+
+				//- Students School ID Box
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Student ID: 
+					br
+					div(class="well ligth-black-font")=studentData.std_ID
+
+				//- Students Email
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Student Email:
+					br
+					div(class="well ligth-black-font")=studentData.std_Email 
+						| @email.itt-tech.edu
+
+			//- Student Contact Number
+			div(class="row")
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Contact Phone Number:
+					brl
+					div(class="well ligth-black-font")=studentData.std_phone
+
+				//- Students Degree
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Student Degree:
+					br
+					div(class="well ligth-black-font")=studentData.std_degree
+
+				//- Students Program
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Program:
+					br
+					div(class="well ligth-black-font")=studentData.std_program
+
+			//- Students Current Quarter
+			div(class="row")
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Current Quarter:
+					br
+					div(class="well ligth-black-font")=studentData.current_quarter
+						| &nbsp;Quarter
+
+				//- Student Requested Chair
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Request Service From:
+					br
+					div(class="well ligth-black-font")=studentData.chairs_request
+
+				//- Student Class Requests
+				div(class="col-md-4 col-xs-12")
+					label(class="black-font") Type of Request:
+					br
+					div(class="well ligth-black-font")=studentData.class_request
+
+			//- Students Comment Box
+			div(class="row")
+				div(class="col-md-12 col-xs-12")
+					label(class="black-font") Detailed Information About Request:
+					br
+					div(class="well ligth-black-font")=studentData.comments
+			footer
+				div(class="row margin-bottom buttonTo-right")
+					div(class="col-md-4 col-sm-12")
+						p #[a(class="btn btn-primary btn", href="/", role="button") Back to Edit]
+					div(class="col-md-4 col-md-offset-4 col-sm-12")
+						p #[a(class="btn btn-info pull-right", id="print" role="button") Print Page] 

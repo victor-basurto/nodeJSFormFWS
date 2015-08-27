@@ -1,3 +1,6 @@
+body, a, p, div, button {
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
 .buttons-centered {
 	text-align: center;
 }
@@ -33,7 +36,10 @@ a {
 @media(max-width: 860px) {
 	.submit-or-cancel {
 		text-align: center;
-	} 	
+	} 
+	.buttonTo-right {
+		text-align: right;
+	}	
 }
 .error-message {
 	color: red;
@@ -48,4 +54,26 @@ a {
 }
 .light-black-font {
 	color: #616161;
+}
+.margin-bottom {
+	margin-bottom: 30px;
+}
+
+/*---------------------------------------------------
+	PRINTING AREA
+---------------------------------------------------*/
+@media print {
+	@media(max-width: 860px) {
+		.buttonTo-right {
+			/*text-align: right;*/
+			display: none;
+		}
+		.jumbotron {
+			display: none;
+		}
+		.well {
+			vertical-align: text-top;
+		}
+	
+	}
 }

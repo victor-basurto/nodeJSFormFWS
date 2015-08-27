@@ -59,14 +59,24 @@ app.get('/', function( req, res ) {
 	res.render('index'); // index view
 });
 
+// render reviewAccademicForm view
+app.get('/lastReview', function( req, res, err ) {
+	if ( err ) {
+		console.log(err);
+	} else {
+		res.render('/lastReview/reviewAccademicForm');		
+	}
+});
 
 /**
  * POST forms and
  * Adding content to DB
+ * Action '/'
+ * targeting the Accademic Affairs Modal
  */
 app.post('/', function( req, res, next ) {
-	// check if everything went true
-	console.log(req.bodyParser);
+	// check if everything went throu
+	console.log('Body Parser: ' + req.bodyParser);
 
 	// obtaining data from the user with the already defined schema
 	var data = {
@@ -80,28 +90,37 @@ app.post('/', function( req, res, next ) {
 		current_quarter: req.body.stdQuarter,
 		chairs_request: req.body.stdChairs,
 		class_request: req.body.stdTypeRequest,
-		comments: req.body.stdComment
+		comments: req.body.stdComment,
+		draft: true
 	}
 
+	// print the object into the console to make sure 
+	// that the data exist
+	console.log('data: ', data);
 
 	// create a new product obtained from the data
 	var studentData = new StudentRequest(data);
 
-	// app.get('/lastReview', function( req, res ) {
-	// 	StudentRequest.find(function(err, obj) {
-	// 		if( err ) 
-	// 			console.log(err);
-	// 		else
-	// 			res.render('lastReview/reviewAccademicForm', {studentData: obj})
-	// 	});
-	// });
-	
-	app.get('/lastReview', function(res, err, obj) {
-		if( err ) {
-			throw err;
-		} else {
-			console.log(obj);
-			res.render('lastReview/reviewAccademicForm', {studentData: obj});
+	// handle the save method
+	studentData.save({draft:true}, function( err, obj) {
+		if ( err ) {
+			console.log(err);
+		} else { 
+			// print arguments in case they exist
+			for ( var i = 0; i < arguments.length; i++ ) {
+				console.log('Arguments' + i, arguments[i]);
+			}
+			// print the object to the console
+			console.log('The object is: ' + obj);
+			if(err) {
+				// if there's an error, send the user back to Index
+				console.log(err);
+				res.render('index');
+			} else {
+				// in case there's no error, render reviewAccademicForm and pass the object
+				res.render('lastReview/reviewAccademicForm', {studentData: obj});
+			}
+
 		}
 	});
 	
@@ -128,7 +147,6 @@ app.post('/second-modal', function( req, res, next ) {
 		lrc_request: req.body.lrcRequest,
 		std_service_tag: req.body.stdServiceTag,
 		comments: req.body.stdComment
-
 	}
 
 	// create a new product obtained from the data
@@ -201,7 +219,6 @@ app.post('/reviewAccForm', function( req, res, next ) {
 			res.render('../printForm', {studentData: obj});
 		}
 	});	
-
 });
 
 
