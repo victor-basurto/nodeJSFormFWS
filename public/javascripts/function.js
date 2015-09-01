@@ -147,6 +147,18 @@ $(document).on('ready', function() {
 		return result;
     });
 
+    /**
+	 * Enabling Tooltip and Options
+	 */
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip({
+			delay: {
+				'show': 200,
+				'hide': 1000
+			}
+		});
+	});
+
 
     // enable print options
 	$('#print').on('click', function() {

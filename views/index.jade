@@ -410,10 +410,16 @@ block content
                                     br
                                     input(type="text", class="form-control sServTag", id="student-service-tag", 
                                         name="stdServiceTag",
-                                        maxlength="8", 
+                                        maxlength="8",
+                                        data-toggle="tooltip",
+                                        title="Service Tag Located Underneath Laptop",
+                                        data-placement="bottom",
                                         placeholder="Enter Service Tag",
                                         pattern="^[0-9]{8}$")
                                     span(class="error-message")
+                                    
+                                    
+
 
                         //- Students Comment Box
                         div(class="row")
