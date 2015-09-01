@@ -4,13 +4,13 @@ block content
 	div(class="container")
 		div(class="jumbotron")
 			h1 Review Your Accademic Affair Form
-			p After Reviewing, Please Print or Go Back to Edit Form again
+			p If Everything is Correct, Please Print Your Page and Close the Program
 
 		// Modal Academic Affairs
 		form(data-togle="validator", role="form", method="post", action="/reviewAccform")
 			// date-picker
 			div(class="row")
-				div(class="col-md-2 col-md-offset-10")
+				div(class="col-md-2 col-md-offset-10 col-xs-4 col-xs-offset-8")
 					label(class="black-font") Date:
 					br
 					div(class="well ligth-black-font")=studentData.date.toDateString()
@@ -23,13 +23,13 @@ block content
 					div(class="well ligth-black-font")=studentData.std_name
 
 				//- Students School ID Box
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-6")
 					label(class="black-font") Student ID: 
 					br
 					div(class="well ligth-black-font")=studentData.std_ID
 
 				//- Students Email
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-6")
 					label(class="black-font") Student Email:
 					br
 					div(class="well ligth-black-font")=studentData.std_Email 
@@ -43,33 +43,33 @@ block content
 					div(class="well ligth-black-font")=studentData.std_phone
 
 				//- Students Degree
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-6")
 					label(class="black-font") Student Degree:
 					br
 					div(class="well ligth-black-font")=studentData.std_degree
 
 				//- Students Program
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-6")
 					label(class="black-font") Program:
 					br
 					div(class="well ligth-black-font")=studentData.std_program
 
 			//- Students Current Quarter
 			div(class="row")
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-4")
 					label(class="black-font") Current Quarter:
 					br
 					div(class="well ligth-black-font")=studentData.current_quarter
 						| &nbsp;Quarter
 
 				//- Student Requested Chair
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-4")
 					label(class="black-font") Request Service From:
 					br
 					div(class="well ligth-black-font")=studentData.chairs_request
 
 				//- Student Class Requests
-				div(class="col-md-4 col-xs-12")
+				div(class="col-md-4 col-xs-4")
 					label(class="black-font") Type of Request:
 					br
 					div(class="well ligth-black-font")=studentData.class_request
@@ -82,8 +82,9 @@ block content
 					div(class="well ligth-black-font")=studentData.comments
 			footer
 				div(class="row margin-bottom buttonTo-right")
+					div(class="col-md-4")
+						p #[a(class="btn btn-primary btn", id="back-edit" href="/", role="button") Back to Edit]
+					div(class="col-md-3 col-md-offset-1 col-sm-12")
+						p #[a(class="btn btn-danger btn pull-center", href="/", role="button") Finish Program]
 					div(class="col-md-4 col-sm-12")
-						p #[a(class="btn btn-primary btn", href="/", role="button") Back to Edit]
-					div(class="col-md-4 col-md-offset-4 col-sm-12")
-						p #[a(class="btn btn-info pull-right", id="print" role="button") Print Page] 
-						//- button(type="button" class="btn btn-info pull-right" id="print") Print Page
+						p #[a(class="btn btn-info pull-right", id="print", role="button") Print Page] 

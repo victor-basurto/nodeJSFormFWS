@@ -153,6 +153,13 @@ $(document).on('ready', function() {
 		window.print();
 	});
 
+	// go back button
+	$('#backEdit').on('click', function() {
+		$.post('/backEdit', {data: studentData}, function(data) {
+			console.log(data);
+		});
+	}, 'json');
+
 	/**
 	 * Passing three arguments 
 	 * $formControl: will receive the parent field of the $this which in this case is #sname

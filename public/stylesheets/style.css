@@ -41,6 +41,9 @@ a {
 		text-align: right;
 	}	
 }
+.buttonTo-right:nth-child(2) {
+	text-align: center;
+}
 .error-message {
 	color: red;
 	font-style: italic;

@@ -68,6 +68,15 @@ app.get('/lastReview', function( req, res, err ) {
 	}
 });
 
+// render reviewTechSupportForm view
+app.get('/lastReview', function( req, res, err ) {
+	if ( err ) {
+		console.log(err);
+	} else {
+		res.render('/lastReview/reviewTechSupportForm');
+	}
+});
+
 /**
  * POST forms and
  * Adding content to DB
@@ -75,7 +84,7 @@ app.get('/lastReview', function( req, res, err ) {
  * targeting the Accademic Affairs Modal
  */
 app.post('/', function( req, res, next ) {
-	// check if everything went throu
+	// check if everything went through
 	console.log('Body Parser: ' + req.bodyParser);
 
 	// obtaining data from the user with the already defined schema
@@ -103,24 +112,24 @@ app.post('/', function( req, res, next ) {
 
 	// handle the save method
 	studentData.save({draft:true}, function( err, obj) {
+
+		// print arguments in case they exist
+		for ( var i = 0; i < arguments.length; i++ ) {
+			console.log('Arguments' + i, arguments[i]);
+		}
+		// if there's an error while printing form
 		if ( err ) {
+			// send user to index and print the error
 			console.log(err);
+			res.render('index');
 		} else { 
-			// print arguments in case they exist
-			for ( var i = 0; i < arguments.length; i++ ) {
-				console.log('Arguments' + i, arguments[i]);
-			}
 			// print the object to the console
 			console.log('The object is: ' + obj);
-			if(err) {
-				// if there's an error, send the user back to Index
-				console.log(err);
-				res.render('index');
-			} else {
-				// in case there's no error, render reviewAccademicForm and pass the object
-				res.render('lastReview/reviewAccademicForm', {studentData: obj});
-			}
-
+			
+			// if there's no error, send user to printForm.jade 
+			// and pass studentData as an object to 
+			// retreive all the info from the DB
+			res.render('lastReview/reviewAccademicForm', {studentData: obj});	
 		}
 	});
 	
@@ -146,14 +155,15 @@ app.post('/second-modal', function( req, res, next ) {
 		tech_request: req.body.technicalRequest,
 		lrc_request: req.body.lrcRequest,
 		std_service_tag: req.body.stdServiceTag,
-		comments: req.body.stdComment
+		comments: req.body.stdComment,
+		draft: true
 	}
 
 	// create a new product obtained from the data
 	var studentDataModal_two = new StudentRequest(data_secondModal);
 
 	// handle the save method
-	studentDataModal_two.save(function(err, obj) {
+	studentDataModal_two.save({draft:true},function(err, obj) {
 		// log the arguments that the user posted to check if they exist
 		for( var i = 0; i < arguments.length; i++ ) {
 			console.log("Arguments: " + i, arguments[i]);
@@ -168,7 +178,7 @@ app.post('/second-modal', function( req, res, next ) {
 			// if there's no error, send user to printForm.jade 
 			// and pass studentData as an object to 
 			// retreive all the info from the DB
-			res.render('printFormModal_two', {studentDataModal_two: obj});
+			res.render('lastReview/reviewTechSupportForm', {studentDataModal_two: obj});
 		}
 	});
 });
