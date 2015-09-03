@@ -82,17 +82,21 @@ $(document).on('ready', function() {
 	 * This function, will validate Student Quarter
 	 */
 	$('.squarter').keyup(function() {
-		// global variable for $('.quarter')
-		var $this = $(this);
+		// wrapping Student ID into $this
+		var $this = $( this );
 
-		if( !$this.val() ) { // if there's no value inside of the field
-			$this.controlMessage('Enter Your Current Quarter', 'error');
-			return false;
-		} else if( !$this.val().match(/^[0-9]*$/) ) { // if the value contains spaces
-			$this.controlMessage('Only Numbers and No Spaces', 'error');
-		} else if( $this.val() !== "" ) {
-			$this.controlMessage(); // if user type again, hide message
-		}
+		if(!$this.val()) { // if there's no value inside of the Phone Number
+	    	$this.controlMessage('Enter Student Quarter', 'error');
+	        return false;
+	    } else if( !$this.val().match(/^[0-9]*$/) ) { // if the value contains Spaces
+	    	$this.controlMessage('Only Numbers and no spaces', 'error');
+	    	return false;
+	    } else if( $this.val() > 30 ) {
+	    	$this.controlMessage('Up to 30 Quarters');
+	    	return false;
+	    } else if ( $this.val() !== "" ) {
+	    	$this.controlMessage(); // if the user type again, hide message
+	    }
 	});
 
 	/**

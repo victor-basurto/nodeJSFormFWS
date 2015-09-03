@@ -4,6 +4,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 
 var app = express();
 
@@ -131,6 +132,56 @@ app.post('/', function( req, res, next ) {
 			// retreive all the info from the DB
 			res.render('lastReview/reviewAccademicForm', {studentData: obj});	
 		}
+
+
+		// create reusable transport method (opens pool of SMTP connections)
+		var transporter = nodemailer.createTransport({
+		    service: "Gmail",
+		    tls: {
+		    	rejectUnauthorized: false
+		    },
+		    auth: {
+		        user: "fwsforms@gmail.com",
+		        pass: "fws1234Pass"
+		    }
+		});
+
+		// information about the html file
+		var student = "<b>Student:</b> ",
+			studentid = "<b>Student ID:</b> ",
+			studentEmail = "<b>Student Email:</b> ",
+			studentPhone = "<b>Student Phone Number:</b> ",
+			studentDegree = "<b>Student Phone Number:</b> ",
+			studentProgram = "<b>Student Program:</b> ",
+			studentQuarter = "<b>Request Service From:</b> ",
+			requestServiceFrom = "<b>Request Service From:</b> ",
+			typeOfRequest = "<b>Type of Request:</b> ",
+			studentComment = "<b>Student Comment:</b> ";
+
+
+		// setup e-mail data with unicode symbols
+		var mailOptions = {
+		    // from: "Fred Foo <foo@blurdybloop.com>", // sender address
+		    to: "fwsforms@gmail.com", // list of receivers
+		    subject: "Accademic Affairs Request Form", // Subject line
+		    // text: "", // plaintext body
+		    html: "<p>" + student + req.body.stdName + "</p> <br/> <p>" + studentid + req.body.stdId + "</p> <br/> <p>" + studentEmail + req.body.stdEmail + "</p> <br/> <p>" + studentPhone + req.body.stdPhone + "</p> <br/> <p>" + studentDegree + req.body.stdDegree + "</p> <br/> <p>" + studentProgram + req.body.stdProgram + "</p> <br/> <p>" + studentQuarter + req.body.stdQuarter + "</p> <br/> <p>" + requestServiceFrom + req.body.stdChairs + "</p> <br/> <p>" + typeOfRequest + req.body.stdTypeRequest + "</p> <br/> <p>" + studentComment + req.body.stdComment + "</p> <br/>" // html body
+		}
+
+		// send mail with defined transport object
+		transporter.sendMail(mailOptions, function(error, info){
+		    if(error){
+		        console.log(error);
+		    }else{
+		        console.log("Message sent: " + info.message);
+		    }
+
+		    // if you don't want to use this transport object anymore, uncomment following line
+		    //smtpTransport.close(); // shut down the connection pool, no more messages
+		});
+
+
+
 	});
 	
 });
@@ -177,7 +228,7 @@ app.post('/second-modal', function( req, res, next ) {
 			console.log(obj);
 			// if there's no error, send user to printForm.jade 
 			// and pass studentData as an object to 
-			// retreive all the info from the DB
+			// retreive all the info from the DB 
 			res.render('lastReview/reviewTechSupportForm', {studentDataModal_two: obj});
 		}
 	});

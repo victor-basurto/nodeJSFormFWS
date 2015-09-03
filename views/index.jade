@@ -127,12 +127,13 @@ block content
                                 div(class="form-group")
                                     label(for="squarter") Current Quarter:
                                     br
-                                    input(type="text", class="form-control", id="squarter", 
+                                    input(type="text", class="form-control squarter", id="squarter", 
                                         name="stdQuarter",
                                         maxlength="2",
                                         placeholder="Enter Number of Current Quarter",
-                                        pattern="^[0-9]*$",
+                                        pattern="^[0-9]{1,30}*$",
                                         required="required")
+                                    span(class="error-message")
 
                             //- Student Requested Chair
                             div(class="col-md-4 col-xs-12")
