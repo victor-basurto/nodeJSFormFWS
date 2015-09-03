@@ -162,7 +162,7 @@ app.post('/', function( req, res, next ) {
 		// setup e-mail data with unicode symbols
 		var mailOptions = {
 		    // from: "Fred Foo <foo@blurdybloop.com>", // sender address
-		    to: "fwsforms@gmail.com", // list of receivers
+		    to: "SomeEmail@gmail.com", // list of receivers
 		    subject: "Accademic Affairs Request Form", // Subject line
 		    // text: "", // plaintext body
 		    html: "<p>" + student + req.body.stdName + "</p> <br/> <p>" + studentid + req.body.stdId + "</p> <br/> <p>" + studentEmail + req.body.stdEmail + "</p> <br/> <p>" + studentPhone + req.body.stdPhone + "</p> <br/> <p>" + studentDegree + req.body.stdDegree + "</p> <br/> <p>" + studentProgram + req.body.stdProgram + "</p> <br/> <p>" + studentQuarter + req.body.stdQuarter + "</p> <br/> <p>" + requestServiceFrom + req.body.stdChairs + "</p> <br/> <p>" + typeOfRequest + req.body.stdTypeRequest + "</p> <br/> <p>" + studentComment + req.body.stdComment + "</p> <br/>" // html body
